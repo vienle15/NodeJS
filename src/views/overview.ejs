@@ -191,31 +191,40 @@
     <div class="container">
       <h1>🥦 Rikkei Farm 🌽</h1>
       <div class="cards-container">
-        {{ PRODUCT_CARDS }}
+        <% products.forEach(function(product) { %>
         <figure class="card">
-          <div class="card__emoji">{{ image }}{{ image }}</div>
+          <div class="card__emoji"><%= product.image %></div>
           <div class="card__title-box">
-            <h2 class="card__title">{{ productName }}</h2>
+            <h2 class="card__title"><%= product.productName %></h2>
           </div>
 
           <div class="card__details">
-            <div class="card__detail-box {{ organic }}">
-              <h6 class="card__detail card__detail--organic">Organic!</h6>
+            <div
+              class="card__detail-box <%= product.organic ? 'card__detail--organic' : '' %>"
+            >
+              <h6 class="card__detail">
+                <%= product.organic ? 'Organic!' : '' %>
+              </h6>
             </div>
 
             <div class="card__detail-box">
-              <h6 class="card__detail">{{ quantity }} per 📦</h6>
+              <h6 class="card__detail">
+                <%= product.quantity %> per <%= product.image %>
+              </h6>
             </div>
 
             <div class="card__detail-box">
-              <h6 class="card__detail card__detail--price">{{ price }}€</h6>
+              <h6 class="card__detail card__detail--price">
+                <%= product.price %>€
+              </h6>
             </div>
           </div>
 
-          <a class="card__link" href="/product?id={{ id }}">
+          <a class="card__link" href="/product/<%= product.id %>">
             <span>Detail <i class="emoji-right">👉</i></span>
           </a>
         </figure>
+        <% }); %>
       </div>
     </div>
   </body>

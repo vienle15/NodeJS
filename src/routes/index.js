@@ -1,4 +1,5 @@
 import productController from "../controllers/product.controller.js";
+import { getAllProducts } from "../controllers/overview.controller.js";
 
 export function route(app) {
   //tat ca product xu ly o day
@@ -7,9 +8,7 @@ export function route(app) {
   //POST
   app.get("/product/:id", productController.getProduct);
 
-  app.get("/", (req, res) => {
-    res.render("overview");
-  });
+  app.get("/", getAllProducts);
 
   app.get("/search", (req, res) => {
     res.render("search");
@@ -24,6 +23,7 @@ export function route(app) {
       data: [],
     });
   });
+
   //DELETE
   //   app.ger("/delete/:id", () => {});
 }
