@@ -15,8 +15,11 @@ function getProduct(req, res) {
   }
 }
 function deleteProduct(req, res) {}
-
+function createProduct(req, res) {
+  const newProduct = new product();
+}
 export default {
   getProduct: getProduct,
   deleteProduct,
+  createProduct,
 };
