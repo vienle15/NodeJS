@@ -7,6 +7,6 @@ const password = process.env.SQL_PASSWORD;
 export const connection = mysql.createConnection({
   host: "localhost",
   user: "root",
-  database: database,
-  password: password,
+  database: "project",
+  password: "ltvlhk1504###***",
 });

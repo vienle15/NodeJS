@@ -1,19 +1,14 @@
-import express from "express";
-import { route } from "./routes/index.js";
-import { connection } from "./DB/config.js";
-import session from "express-session";
-import MySQLStore2 from "express-mysql-session";
-
-const MySQLStore = MySQLStore2(session);
-
-const app = express();
+const express = require("express");
+const app = (module.exports = express());
+const session = require("express-session");
+const MySQLStore = require("express-mysql-session")(session);
 
 const options = {
   host: "localhost",
   port: 3306,
-  user: "root",
-  password: "ltvlhk1504###***",
-  database: "project",
+  user: "session_test",
+  password: "password",
+  database: "session_test",
 };
 
 const sessionStore = new MySQLStore(options);
@@ -39,7 +34,3 @@ sessionStore
     // Something went wrong.
     console.error(error);
   });
-
-app.listen(8080, () => {
-  console.log("connecting http://localhost:8080");
-});
